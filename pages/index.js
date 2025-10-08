@@ -14,14 +14,14 @@ function Home () {
             <h1>Filmes</h1>
 
             <ul>
-                            <li>
-                                <p>Título: {primeiroFilme.titulo}</p>
-                                <p>Ano: {primeiroFilme.ano}</p>
-                                <p>Gênero: {primeiroFilme.genero}</p>
-                                <p>Nota: {primeiroFilme.nota}</p>
+                 <li>
+                     <p>Título: {primeiroFilme.titulo}</p>
+                       <p>Ano: {primeiroFilme.ano}</p>
+                       <p>Gênero: {primeiroFilme.genero}</p>
+                       <p>Nota: {primeiroFilme.nota}</p>
 
-                                <img style={estiloImagem} src={primeiroFilme.poster}/>
-                            </li>
+                       <img style={estiloImagem} src={primeiroFilme.poster}/>
+                 </li>
             </ul>
         </>
     );
