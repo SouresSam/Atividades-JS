@@ -1,36 +1,40 @@
+"use client";
+
 import { filmes } from '../data/filmes';
-
-function CardFilme({filme}) {
-        const estiloImagem = {
-        width: "300px"
-     };
-
-    return (     
-    <li> 
-        <p>Título: {filme.titulo}</p>
-        <p>Ano: {filme.ano}</p>
-        <p>Gênero: {filme.genero}</p>
-        <p>Nota: {filme.nota}</p>
-
-        <img style={estiloImagem} src={filme.poster}/>
-    </li>
-    );
-}
+import CardFilme from '../components/CardFilme';
 
 function Home () {
+    const estiloListaCards = {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '16px',
+        listStyle: 'none'
+    }
+
+    const urlVamosChamar = 
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=pt-BR&page=1`;
+
+    let resposta = null;
+
+    fetch(urlVamosChamar).then(res => {
+        resposta = res;
+        console.log(res)
+    });
+
+    
 
     return (
         <>
             <h1>Filmes</h1>
 
-            <ul>
-                 { 
-                  filmes.map(( filme ) => {
+            <ul style={ estiloListaCards }>
+                {
+                    filmes.map((filme) => {
                         return (
-                          <CardFilme key= { `card-filme-${ filme.id }`} filme={filme} />  
+                            <CardFilme key={ `card-filme-${ filme.id }` } filme={ filme }/>
                         );
-                  })
-                  } 
+                    })
+                }
             </ul>
         </>
     );
