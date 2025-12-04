@@ -14,11 +14,11 @@ function Home () {
     const urlVamosChamar = 
     `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=pt-BR&page=1`;
 
-    let resposta = null;
+    let resposta = "batata";
 
     fetch(urlVamosChamar).then(res => {
         resposta = res;
-        console.log(res)
+        console.log(res.json())
     });
 
     
